@@ -17,6 +17,20 @@ export function focusNextArea(
   areas.at(Math.max(currIndex + dir, 0))?.lead.focus();
 }
 
+export function focusParentArea(stackId: string, el: HTMLElement): boolean {
+  const { stackId: targetStackId } = parseAttr(el);
+  const areaId = closestArea(stackId, el);
+
+  if (stackId === targetStackId || !areaId) {
+    return false;
+  }
+
+  document
+    .querySelector<HTMLElement>(`[data-focusable="${stackId}/${areaId}/lead"]`)
+    ?.focus();
+  return true;
+}
+
 type RovingFocusAreaList = Array<{
   areaId: string;
   lead: HTMLElement;

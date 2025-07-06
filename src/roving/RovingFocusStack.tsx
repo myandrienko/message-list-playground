@@ -18,6 +18,7 @@ import {
   focusFirstArea,
   focusLastArea,
   focusNextArea,
+  focusParentArea,
 } from "./queries";
 import { debug } from "./debug";
 
@@ -85,6 +86,10 @@ export function RovingFocusStack(
             focusNextArea(stackId, event.target, -1);
             break;
 
+          case keys.focusParentKey:
+            handled = focusParentArea(stackId, event.target);
+            break;
+
           default:
             handled = false;
             break;
@@ -149,5 +154,6 @@ function getDirectionalKeys(orientation: RovingFocusStackOrientation) {
       : isHorizontal
       ? "ArrowRight"
       : "ArrowDown",
+    focusParentKey: "Escape",
   };
 }
