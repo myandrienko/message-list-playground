@@ -3,4 +3,4 @@ export {
   RovingFocusStack,
   type RovingFocusStackProps,
 } from "./RovingFocusStack";
-export { useTabIndex, type TabIndexProps } from "./tabIndex";
+export { useTabIndex, type TabIndex, type TabIndexProps } from "./tabIndex";

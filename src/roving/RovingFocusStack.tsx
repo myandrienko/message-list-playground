@@ -103,11 +103,13 @@ export function RovingFocusStack(
       data-focusable={parent.fullAreaId}
       data-stack={stackId}
       style={
-        debug && {
-          padding: "10px",
-          border: "1px solid lightgray",
-          borderRadius: "5px",
-        }
+        debug
+          ? {
+              padding: "10px",
+              border: "1px solid lightgray",
+              borderRadius: "5px",
+            }
+          : undefined
       }
       onFocus={handleFocus}
       onBlur={handleBlur}
