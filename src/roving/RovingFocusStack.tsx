@@ -4,6 +4,8 @@ import {
   useId,
   useMemo,
   useState,
+  type ComponentProps,
+  type ElementType,
   type FocusEvent,
   type KeyboardEvent,
   type PropsWithChildren,
@@ -22,9 +24,10 @@ import {
 } from "./queries";
 import { debug } from "./debug";
 
-export interface RovingFocusStackProps {
+export type RovingFocusStackProps<T extends ElementType = "div"> = {
+  as?: T;
   orientation: RovingFocusStackOrientation;
-}
+} & Omit<ComponentProps<T>, "as" | "orientation">;
 
 export type RovingFocusStackOrientation =
   | "horizontal"
@@ -32,9 +35,10 @@ export type RovingFocusStackOrientation =
   | "horizontal-reverse"
   | "vertical-reverse";
 
-export function RovingFocusStack(
-  props: PropsWithChildren<RovingFocusStackProps>
+export function RovingFocusStack<T extends ElementType = "div">(
+  props: PropsWithChildren<RovingFocusStackProps<T>>
 ) {
+  const { as, orientation, ...rest } = props;
   const stackId = useId();
   const parent = use(RovingFocusAreaContext);
   const [focusedAreaId, setFocusedAreaId] = useState<string | null>(null);
@@ -64,7 +68,7 @@ export function RovingFocusStack(
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLElement>) => {
-      const keys = getDirectionalKeys(props.orientation);
+      const keys = getDirectionalKeys(orientation);
 
       if (event.target instanceof HTMLElement) {
         let handled = true;
@@ -100,21 +104,25 @@ export function RovingFocusStack(
         }
       }
     },
-    [props.orientation, stackId]
+    [orientation, stackId]
   );
 
+  const Component = as ?? "div";
+
   return (
-    <div
+    <Component
+      {...rest}
       data-focusable={parent.fullAreaId}
       data-stack={stackId}
       style={
         debug
           ? {
+              ...rest.style,
               padding: "10px",
               border: "1px solid lightgray",
               borderRadius: "5px",
             }
-          : undefined
+          : rest.style
       }
       onFocus={handleFocus}
       onBlur={handleBlur}
@@ -128,7 +136,7 @@ export function RovingFocusStack(
       <RovingFocusStackContext value={contextValue}>
         {props.children}
       </RovingFocusStackContext>
-    </div>
+    </Component>
   );
 }
 

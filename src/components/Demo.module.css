@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  background: oklch(100 0 0);
+  min-height: 320px;
+  max-height: 800px;
+  min-width: 480px;
+  max-width: 1024px;
+  width: 100%;
+  overflow: hidden;
+}
