@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import type { Message } from "../data/messages";
-import { MessageListItem } from "./MessageListItem";
 import { RovingFocusArea, RovingFocusStack } from "../roving";
+import { FocusTracker } from "../tracking/FocusTracker";
+import { MessageListItem } from "./MessageListItem";
 
 import styles from "./MessageList.module.css";
-import { FocusTracker } from "../tracking/FocusTracker";
 
 interface MessageListProps {
   messages: Message[];

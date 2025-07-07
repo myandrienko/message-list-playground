@@ -12,7 +12,7 @@ import clsx from "clsx";
 
 export type FocusTrackerProps<T extends ElementType = "div"> = {
   as?: T;
-} & ComponentProps<T>;
+} & Omit<ComponentProps<T>, "as">;
 
 interface FocusRingAnimationParams {
   key: string;

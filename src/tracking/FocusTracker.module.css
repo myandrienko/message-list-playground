@@ -6,7 +6,7 @@
   position: absolute;
   pointer-events: none;
   border: 2px solid oklch(0.6 0.16 250 / 0%);
-  border-radius: 6px;
+  border-radius: calc(0.75rem + 2px);
   transform-origin: 0 0;
   left: calc(1px * var(--focus-ring-to-x) - 2px);
   top: calc(1px * var(--focus-ring-to-y) - 2px);
