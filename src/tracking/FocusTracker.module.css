@@ -1,0 +1,43 @@
+.ring {
+  position: fixed;
+  border: 2px solid blue;
+  border-radius: 4px;
+  pointer-events: none;
+  transform-origin: 0 0;
+  left: calc(1px * var(--focus-ring-to-x));
+  top: calc(1px * var(--focus-ring-to-y));
+  animation: fly
+    max(
+      calc(
+        sqrt(
+            pow(var(--focus-ring-from-x) - var(--focus-ring-to-x), 2) +
+              pow(var(--focus-ring-from-y) - var(--focus-ring-to-y), 2)
+          ) * 0.5ms
+      ),
+      250ms
+    )
+    ease-out both;
+}
+
+@keyframes fly {
+  from {
+    opacity: 0.3;
+    transform: translate(
+      calc(1px * (var(--focus-ring-from-x) - var(--focus-ring-to-x))),
+      calc(1px * (var(--focus-ring-from-y) - var(--focus-ring-to-y)))
+    );
+    width: calc(1px * var(--focus-ring-from-width));
+    height: calc(1px * var(--focus-ring-from-height));
+  }
+
+  75% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0;
+    transform: none;
+    width: calc(1px * var(--focus-ring-to-width));
+    height: calc(1px * var(--focus-ring-to-height));
+  }
+}
