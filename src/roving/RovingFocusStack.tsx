@@ -68,7 +68,8 @@ export function RovingFocusStack<T extends ElementType = "div">(
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLElement>) => {
-      const keys = getDirectionalKeys(orientation);
+      const dir = event.currentTarget.matches(":dir(rtl)") ? "rtl" : "ltr";
+      const keys = getDirectionalKeys(orientation, dir);
 
       if (event.target instanceof HTMLElement) {
         let handled = true;
@@ -141,10 +142,15 @@ export function RovingFocusStack<T extends ElementType = "div">(
   );
 }
 
-function getDirectionalKeys(orientation: RovingFocusStackOrientation) {
+function getDirectionalKeys(
+  orientation: RovingFocusStackOrientation,
+  dir: "rtl" | "ltr"
+) {
   const isHorizontal =
     orientation === "horizontal" || orientation === "horizontal-reverse";
-  const isForwards = orientation === "horizontal" || orientation === "vertical";
+  const isForwards =
+    +(orientation === "horizontal" || orientation === "vertical") ^
+    +(dir === "rtl");
 
   return {
     focusFirstKey: isForwards ? "Home" : "End",
