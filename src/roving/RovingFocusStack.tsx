@@ -149,8 +149,8 @@ function getDirectionalKeys(
   const isHorizontal =
     orientation === "horizontal" || orientation === "horizontal-reverse";
   const isForwards =
-    +(orientation === "horizontal" || orientation === "vertical") ^
-    +(dir === "rtl");
+    orientation === (dir === "rtl" ? "horizontal-reverse" : "horizontal") ||
+    orientation === "vertical";
 
   return {
     focusFirstKey: isForwards ? "Home" : "End",
