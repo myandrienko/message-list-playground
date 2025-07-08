@@ -44,7 +44,7 @@ export function MessageList(props: MessageListProps) {
                   >
                     <li
                       className={styles.message}
-                      onPointerDown={() => handleClick(message)}
+                      onClick={() => handleClick(message)}
                     >
                       <MessageListItem
                         message={message}
@@ -61,7 +61,7 @@ export function MessageList(props: MessageListProps) {
       {expandedMessage && (
         <div
           className={styles.overlay}
-          onPointerDown={() => setExpandedMessage(null)}
+          onClick={() => setExpandedMessage(null)}
         >
           <MessageMenu message={expandedMessage} />
         </div>
