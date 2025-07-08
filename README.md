@@ -1,5 +1,7 @@
 # Experiments for Chat Message List Component
 
+[Start Demo](https://message-list-playground.vercel.app/)
+
 Chat message lists are tricky. To me, four key points when implementing message
 lists are:
 
@@ -121,3 +123,8 @@ This component is fully ready for RTL scripts. It uses logical CSS properties,
 and the roving focus implementation also takes script direction into account.
 
 > **Try it out:** Add `dir="rtl"` to the page root.
+
+## Typography and Grid
+
+This demo is based on a simple 8px grid. The grid is enforced by setting 1rem to
+equal 8px, and only using rem for absolute values.

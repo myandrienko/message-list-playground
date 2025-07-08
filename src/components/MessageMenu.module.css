@@ -6,3 +6,7 @@
   padding: 2rem;
   padding-inline-start: 10rem;
 }
+
+.message {
+  pointer-events: none;
+}
