@@ -1,9 +1,18 @@
-import clsx from "clsx";
-import { i_delete, i_reply } from "../icons/index.ts";
+import Lottie from "lottie-react";
+import {
+  a_heart,
+  a_lol,
+  a_thumbsup,
+  i_delete,
+  i_reply,
+} from "../icons/index.ts";
 import { RovingFocusArea, RovingFocusStack } from "../roving";
 import { FocusTracker } from "../tracking/FocusTracker";
+import { Button } from "./Button.tsx";
+import { Icon } from "./Icon.tsx";
 
 import styles from "./MessageActions.module.css";
+import { ReactionButton } from "./ReactionButton.tsx";
 
 export function MessageActions() {
   return (
@@ -11,38 +20,41 @@ export function MessageActions() {
       <FocusTracker className={styles.toolbar}>
         <RovingFocusArea defaultFocusable>
           {(tab) => (
-            <button type="button" className={styles.button} {...tab("lead")}>
+            <Button {...tab("lead")}>
               <Icon icon={i_reply} />
-              <div className={styles.label}>Reply</div>
-            </button>
+              Reply
+            </Button>
           )}
         </RovingFocusArea>
         <RovingFocusArea>
           {(tab) => (
-            <button
-              type="button"
-              className={clsx(styles.button, styles.button_destructive)}
-              {...tab("lead")}
-            >
+            <Button destructive {...tab("lead")}>
               <Icon icon={i_delete} />
-              <div className={styles.label}>Delete</div>
-            </button>
+              Delete
+            </Button>
           )}
         </RovingFocusArea>
         <RovingFocusArea>
-          {(tab) => (
-            <button type="button" className={styles.button} {...tab("lead")}>
-              Reaction
-            </button>
-          )}
+          {(tab) => <ReactionButton animation={a_thumbsup} {...tab("lead")} />}
+        </RovingFocusArea>
+        <RovingFocusArea>
+          {(tab) => <ReactionButton animation={a_heart} {...tab("lead")} />}
+        </RovingFocusArea>
+        <RovingFocusArea>
+          {(tab) => <ReactionButton animation={a_lol} {...tab("lead")} />}
         </RovingFocusArea>
       </FocusTracker>
     </RovingFocusStack>
   );
 }
 
-function Icon(props: { icon: string }) {
+function Reaction(props: { animation: object }) {
   return (
-    <i className={styles.icon} style={{ maskImage: `url("${props.icon}")` }} />
+    <Lottie
+      animationData={props.animation}
+      style={{ width: "24px", height: "24px" }}
+      autoplay={true}
+      loop={1}
+    />
   );
 }

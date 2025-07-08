@@ -101,6 +101,7 @@ export function RovingFocusStack<T extends ElementType = "div">(
 
         if (handled) {
           event.stopPropagation();
+          event.preventDefault();
         }
       }
     },
