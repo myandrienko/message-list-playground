@@ -17,6 +17,8 @@ export function ReactionButton(props: ReactionButtonProps) {
       {...rest}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
+      onPointerEnter={() => setFocused(true)}
+      onPointerLeave={() => setFocused(false)}
     >
       <Lottie
         key={isFocused ? "force-a" : "force-b"}

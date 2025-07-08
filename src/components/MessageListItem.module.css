@@ -11,7 +11,7 @@
 
 .root:hover,
 :has(:focus-visible) .root:focus-within {
-  background-color: oklch(0 0 0 / 3%);
+  background-color: oklch(from var(--tint-color) l c h / 3%);
 }
 
 :has(:focus-visible) .root:focus-within {
@@ -26,7 +26,7 @@
 }
 
 .timestamp {
-  color: oklch(0 0 0 / 50%);
+  color: oklch(from var(--text-color) l c h / 50%);
   font-weight: 480;
   font-size: 1.5rem;
   line-height: 1;

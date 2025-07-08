@@ -5,7 +5,7 @@
 .ring {
   position: absolute;
   pointer-events: none;
-  border: 2px solid oklch(0.6 0.16 250 / 0%);
+  border: 2px solid oklch(from var(--focus-ring-color) l c h / 0%);
   border-radius: calc(0.75rem + 2px);
   transform-origin: 0 0;
   left: calc(1px * var(--focus-ring-to-x) - 2px);
@@ -14,7 +14,7 @@
 }
 
 :has(:focus-visible) .ring {
-  border-color: oklch(0.6 0.16 250 / 30%);
+  border-color: oklch(from var(--focus-ring-color) l c h / 30%);
 }
 
 @keyframes fly {

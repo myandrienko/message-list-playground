@@ -5,12 +5,22 @@
   cursor: default;
 }
 
+:root {
+  --focus-ring-color: oklch(0.6 0.16 250);
+  --text-color: oklch(0 0 0);
+  --surface-color: oklch(100 0 0);
+  --tint-color: oklch(0 0 0);
+  --semantic-positive-color: oklch(0.7 0.2 150);
+  --semantic-danger-color: oklch(0.5 0.2 20);
+  --semantic-negative-color: oklch(0.7 0.2 20);
+}
+
 :focus {
   outline: 0;
 }
 
 :focus-visible {
-  outline: 2px solid oklch(0.6 0.16 250);
+  outline: 2px solid var(--focus-ring-color);
 }
 
 html {
@@ -25,7 +35,7 @@ body {
   font-variation-settings: "wdth" 100;
   font-size: 2rem;
   line-height: 3rem;
-  background: oklch(0 0 0 / 10%);
+  background: oklch(from var(--tint-color) l c h / 10%);
   margin: 0;
 }
 

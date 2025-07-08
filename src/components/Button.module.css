@@ -14,13 +14,13 @@
 }
 
 .button:hover {
-  background: oklch(0 0 0 / 5%);
+  background: oklch(from var(--tint-color) l c h / 5%);
 }
 
 .button:active {
-  background: oklch(0 0 0 / 10%);
+  background: oklch(from var(--tint-color) l c h / 10%);
 }
 
 .button_destructive {
-  color: oklch(0.5 0.2 20);
+  color: var(--semantic-danger-color);
 }
