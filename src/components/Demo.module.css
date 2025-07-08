@@ -4,9 +4,15 @@
   border-radius: 1rem;
   background: var(--surface-color);
   min-height: 320px;
-  max-height: 800px;
-  min-width: 480px;
+  max-height: 1000px;
+  min-width: 320px;
   max-width: 1024px;
   width: 100%;
   overflow: hidden;
+}
+
+@media (max-width: 440px) {
+  .root {
+    border-radius: 0;
+  }
 }

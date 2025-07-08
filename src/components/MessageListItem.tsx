@@ -38,7 +38,7 @@ export function MessageListItem(props: MessageListItemProps) {
       )}
       <div className={styles.body}>{props.message.body}</div>
       <div className={styles.actions}>
-        <MessageActions />
+        <MessageActions orientation="horizontal" />
       </div>
     </div>
   );

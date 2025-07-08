@@ -9,14 +9,16 @@
   transition-delay: 150ms;
 }
 
-.root:hover,
-:has(:focus-visible) .root:focus-within {
-  background-color: oklch(from var(--tint-color) l c h / 3%);
-}
+@media (min-width: 440px) {
+  .root:hover,
+  :has(:focus-visible) .root:focus-within {
+    background-color: oklch(from var(--tint-color) l c h / 3%);
+  }
 
-:has(:focus-visible) .root:focus-within {
-  transition-duration: 0s;
-  transition-delay: 0s;
+  :has(:focus-visible) .root:focus-within {
+    transition-duration: 0s;
+    transition-delay: 0s;
+  }
 }
 
 .author {
@@ -50,8 +52,10 @@
   transition-delay: 150ms;
 }
 
-.root:not(:has(:focus-visible) *):hover .actions,
-:has(:focus-visible) .root:focus-within .actions {
-  opacity: 1;
-  pointer-events: all;
+@media (min-width: 440px) {
+  .root:not(:has(:focus-visible) *):hover .actions,
+  :has(:focus-visible) .root:focus-within .actions {
+    opacity: 1;
+    pointer-events: all;
+  }
 }

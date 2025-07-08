@@ -16,6 +16,12 @@
   overflow-y: auto;
 }
 
+@media (max-width: 440px) {
+  .conversations {
+    padding: 2rem;
+  }
+}
+
 .messages {
   display: flex;
   flex-direction: column-reverse;
@@ -24,4 +30,17 @@
   margin: 0;
   padding: 0;
   padding-inline-start: 8rem;
+}
+
+.overlay {
+  position: fixed;
+  overscroll-behavior: contain;
+  z-index: 2;
+  inset: 0;
+  background: oklch(from var(--surface-color) l c h / 40%);
+  backdrop-filter: blur(3rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

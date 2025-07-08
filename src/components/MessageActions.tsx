@@ -1,4 +1,4 @@
-import Lottie from "lottie-react";
+import clsx from "clsx";
 import {
   a_heart,
   a_lol,
@@ -10,14 +10,23 @@ import { RovingFocusArea, RovingFocusStack } from "../roving";
 import { FocusTracker } from "../tracking/FocusTracker";
 import { Button } from "./Button.tsx";
 import { Icon } from "./Icon.tsx";
-
-import styles from "./MessageActions.module.css";
 import { ReactionButton } from "./ReactionButton.tsx";
 
-export function MessageActions() {
+import styles from "./MessageActions.module.css";
+
+export interface MessageActionsProps {
+  orientation: "horizontal" | "vertical";
+}
+
+export function MessageActions(props: MessageActionsProps) {
   return (
-    <RovingFocusStack className={styles.root} orientation="horizontal">
-      <FocusTracker className={styles.toolbar}>
+    <RovingFocusStack className={styles.root} orientation={props.orientation}>
+      <FocusTracker
+        className={clsx(styles.toolbar, {
+          [styles.toolbar_horizontal]: props.orientation === "horizontal",
+          [styles.toolbar_vertical]: props.orientation === "vertical",
+        })}
+      >
         <RovingFocusArea defaultFocusable>
           {(tab) => (
             <Button {...tab("lead")}>
@@ -34,27 +43,20 @@ export function MessageActions() {
             </Button>
           )}
         </RovingFocusArea>
-        <RovingFocusArea>
-          {(tab) => <ReactionButton animation={a_thumbsup} {...tab("lead")} />}
-        </RovingFocusArea>
-        <RovingFocusArea>
-          {(tab) => <ReactionButton animation={a_heart} {...tab("lead")} />}
-        </RovingFocusArea>
-        <RovingFocusArea>
-          {(tab) => <ReactionButton animation={a_lol} {...tab("lead")} />}
-        </RovingFocusArea>
+        <div className={styles.reactions}>
+          <RovingFocusArea>
+            {(tab) => (
+              <ReactionButton animation={a_thumbsup} {...tab("lead")} />
+            )}
+          </RovingFocusArea>
+          <RovingFocusArea>
+            {(tab) => <ReactionButton animation={a_heart} {...tab("lead")} />}
+          </RovingFocusArea>
+          <RovingFocusArea>
+            {(tab) => <ReactionButton animation={a_lol} {...tab("lead")} />}
+          </RovingFocusArea>
+        </div>
       </FocusTracker>
     </RovingFocusStack>
-  );
-}
-
-function Reaction(props: { animation: object }) {
-  return (
-    <Lottie
-      animationData={props.animation}
-      style={{ width: "24px", height: "24px" }}
-      autoplay={true}
-      loop={1}
-    />
   );
 }

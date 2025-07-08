@@ -1,10 +1,12 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import type { Message } from "../data/messages";
 import { RovingFocusArea, RovingFocusStack } from "../roving";
 import { FocusTracker } from "../tracking/FocusTracker";
 import { MessageListItem } from "./MessageListItem";
 
 import styles from "./MessageList.module.css";
+import { isMobile } from "../mobile";
+import { MessageMenu } from "./MessageMenu";
 
 interface MessageListProps {
   messages: Message[];
@@ -15,6 +17,14 @@ export function MessageList(props: MessageListProps) {
     () => groupConversations(props.messages),
     [props.messages]
   );
+
+  const [expandedMessage, setExpandedMessage] = useState<Message | null>(null);
+
+  const handleClick = (message: Message) => {
+    if (isMobile()) {
+      setExpandedMessage(message);
+    }
+  };
 
   return (
     <RovingFocusStack className={styles.root} orientation="vertical-reverse">
@@ -32,7 +42,10 @@ export function MessageList(props: MessageListProps) {
                     key={messageIndex}
                     defaultFocusable={isNewest}
                   >
-                    <li className={styles.message}>
+                    <li
+                      className={styles.message}
+                      onPointerDown={() => handleClick(message)}
+                    >
                       <MessageListItem
                         message={message}
                         includeHeader={isOldestInConversation}
@@ -45,6 +58,14 @@ export function MessageList(props: MessageListProps) {
           </li>
         ))}
       </FocusTracker>
+      {expandedMessage && (
+        <div
+          className={styles.overlay}
+          onPointerDown={() => setExpandedMessage(null)}
+        >
+          <MessageMenu message={expandedMessage} />
+        </div>
+      )}
     </RovingFocusStack>
   );
 }

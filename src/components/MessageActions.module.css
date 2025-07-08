@@ -9,3 +9,11 @@
   display: flex;
   gap: 0.5rem;
 }
+
+.toolbar_vertical {
+  flex-direction: column;
+}
+
+.reactions {
+  display: flex;
+}
