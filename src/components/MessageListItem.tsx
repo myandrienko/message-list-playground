@@ -3,6 +3,7 @@ import { getUserPresenceStatus } from "../data/users";
 import { useTabIndex } from "../roving";
 import { MessageActions } from "./MessageActions";
 import { Userpic } from "./Userpic";
+import { FocusTracker } from "../tracking/FocusTracker";
 
 import styles from "./MessageListItem.module.css";
 
@@ -36,7 +37,7 @@ export function MessageListItem(props: MessageListItemProps) {
           </time>
         </div>
       )}
-      <div className={styles.body}>{props.message.body}</div>
+      <FocusTracker className={styles.body}>{props.message.body}</FocusTracker>
       <div className={styles.actions}>
         <MessageActions orientation="horizontal" />
       </div>

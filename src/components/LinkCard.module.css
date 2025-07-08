@@ -1,0 +1,32 @@
+.root {
+  display: block;
+  color: var(--text-color);
+  max-width: 360px;
+  font-size: 1.75rem;
+  border: 1px solid oklch(from var(--tint-color) l c h / 10%);
+  border-radius: 0.75rem;
+  line-height: 2.5rem;
+  padding: calc(1rem - 1px);
+  margin-block-start: 1rem;
+}
+
+.root,
+.root * {
+  cursor: pointer;
+}
+
+:has(:focus-visible) .root:focus-within {
+  border-color: transparent;
+}
+
+.header {
+  font-weight: 600;
+}
+
+.link {
+  color: var(--accent-color);
+}
+
+.description {
+  color: oklch(from var(--text-color) l c h / 60%);
+}

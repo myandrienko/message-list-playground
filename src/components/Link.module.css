@@ -1,0 +1,10 @@
+.root {
+  color: var(--accent-color);
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 0.75rem;
+}
+
+.root:hover {
+  border-bottom: 1px solid oklch(from var(--accent-color) l c h / 10%);
+}

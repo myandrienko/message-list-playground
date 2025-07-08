@@ -9,7 +9,7 @@
   font: inherit;
   color: var(--text-color);
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 1.75rem;
   font-weight: 500;
   letter-spacing: 0.15ex;
 }

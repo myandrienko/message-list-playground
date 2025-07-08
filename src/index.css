@@ -8,6 +8,7 @@
 :root {
   --focus-ring-color: oklch(0.6 0.16 250);
   --text-color: oklch(0 0 0);
+  --accent-color: oklch(0.5 0.16 250);
   --surface-color: oklch(100 0 0);
   --tint-color: oklch(0 0 0);
   --semantic-positive-color: oklch(0.7 0.2 150);
@@ -23,6 +24,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --text-color: oklch(100 0 0);
+    --accent-color: oklch(0.8 0.16 250);
     --surface-color: oklch(0.2 0.03 250);
     --tint-color: oklch(100 0 0);
     --semantic-danger-color: oklch(0.8 0.2 20);

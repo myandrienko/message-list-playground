@@ -1,8 +1,12 @@
+import type { ReactNode } from "react";
 import type { User } from "./users";
+import { Link } from "../components/Link";
+
+import linkCardStyles from "../components/LinkCard.module.css";
 
 export interface Message {
   user: User;
-  body: string;
+  body: ReactNode;
   timestamp: string;
 }
 
@@ -94,7 +98,30 @@ export const messages: Message[] = [
   },
   {
     user: { id: "doc_brown", name: "Doc" },
-    body: "Thank God I found you. Listen, can you meet me at Twin Pines Mall tonight at 1:15? I've made a major breakthrough; I'll need your assistance.",
+    body: (
+      <>
+        Thank God I found you. Listen, can you meet me at{" "}
+        <Link href="https://maps.app.goo.gl/j4cAH7H95C8zP8iC7">
+          Twin Pines Mall
+        </Link>{" "}
+        tonight at 1:15? I've made a major breakthrough; I'll need your
+        assistance.
+        <Link
+          className={linkCardStyles.root}
+          href="https://maps.app.goo.gl/j4cAH7H95C8zP8iC7"
+        >
+          <div className={linkCardStyles.header}>
+            Twin Pines Mall - Google Maps
+          </div>
+          <div className={linkCardStyles.link}>
+            https://maps.app.goo.gl/j4cAH7H95C8zP8iC7
+          </div>
+          <div className={linkCardStyles.description}>
+            Unnamed Road, City of Industry, CA 91745, United States.
+          </div>
+        </Link>
+      </>
+    ),
     timestamp: "1985-10-25T08:00:25Z",
   },
   {
