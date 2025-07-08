@@ -26,6 +26,8 @@ export function MessageActions(props: MessageActionsProps) {
           [styles.toolbar_horizontal]: props.orientation === "horizontal",
           [styles.toolbar_vertical]: props.orientation === "vertical",
         })}
+        role="toolbar"
+        aria-orientation={props.orientation}
       >
         <RovingFocusArea defaultFocusable>
           {(tab) => (
@@ -46,14 +48,30 @@ export function MessageActions(props: MessageActionsProps) {
         <div className={styles.reactions}>
           <RovingFocusArea>
             {(tab) => (
-              <ReactionButton animation={a_thumbsup} {...tab("lead")} />
+              <ReactionButton
+                animation={a_thumbsup}
+                {...tab("lead")}
+                aria-label="React with Thumbs Up"
+              />
             )}
           </RovingFocusArea>
           <RovingFocusArea>
-            {(tab) => <ReactionButton animation={a_heart} {...tab("lead")} />}
+            {(tab) => (
+              <ReactionButton
+                animation={a_heart}
+                {...tab("lead")}
+                aria-label="React with Heart"
+              />
+            )}
           </RovingFocusArea>
           <RovingFocusArea>
-            {(tab) => <ReactionButton animation={a_lol} {...tab("lead")} />}
+            {(tab) => (
+              <ReactionButton
+                animation={a_lol}
+                {...tab("lead")}
+                aria-label="React with LOL"
+              />
+            )}
           </RovingFocusArea>
         </div>
       </FocusTracker>
