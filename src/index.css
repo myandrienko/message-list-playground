@@ -34,6 +34,18 @@
     color-mix(in oklch, var(--tint-color) 3%, var(--surface-color));
 }
 
+*::-webkit-scrollbar {
+  background-color: color-mix(
+    in oklch,
+    var(--tint-color) 3%,
+    var(--surface-color)
+  );
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: oklch(from var(--text-color) l c h / 10%);
+}
+
 :focus {
   outline: 0;
 }
